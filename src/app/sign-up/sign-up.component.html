@@ -1,0 +1,117 @@
+<h1 class="text-center">{{title}}</h1>
+
+<hr>
+<div class="jumbotron">
+<div class="container">
+<div class="row">
+
+    <div class="col-md-6">
+    <h3>Welcome</h3>
+    <form [formGroup]="regfrm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" required formControlName="fname" class ="form-control" placeholder="First-name">
+        </div>
+
+        <div  class="alert alert-danger" *ngIf="regfrm.controls['fname'].invalid && regfrm.controls['fname'].touched">
+          <div *ngIf="regfrm.controls['fname'].errors.required">Name is Required</div>
+          <div *ngIf="regfrm.controls['fname'].errors.minlength">Name should be minimum of 3 letters</div>        
+          </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" formControlName="lname" class ="form-control" placeholder="Last-name">
+        </div>
+        <div  class="alert alert-danger" *ngIf="regfrm.controls['lname'].invalid && regfrm.controls['lname'].touched">
+          <div *ngIf="regfrm.controls['lname'].errors.required">LastName is Required</div>
+          <div *ngIf="regfrm.controls['lname'].errors.minlength">LastName should be minimum of 3 letters</div>        
+          </div> 
+
+        <hr>
+    
+        <div class="form-group">
+           <label>Gender</label>
+              <div class="form-control">
+                 <label class="radio-inline">
+                     <input type="radio" value="male" formControlName="gen" name="gen">Male
+                </label>
+                 <label class="radio-inline">
+                     <input type="radio" value="female"formControlName="gen" name="gen">Female
+               </label>
+             </div>
+        </div>
+        <div  class="alert alert-danger" *ngIf="regfrm.controls['gen'].invalid && regfrm.controls['gen'].touched">
+          <div *ngIf="regfrm.controls['gen'].errors.required">Gender is Required</div>
+          </div> 
+
+
+
+    <hr>
+        <div class="form-group"> 
+          <label class="control-label" for="date">Date of Birth</label>
+            <input class="form-control" id="date" formControlName="dobdate" placeholder="YYYY-MM-DD" type="date"/>
+       </div>
+       <div  class="alert alert-danger" *ngIf="regfrm.controls['dobdate'].invalid && regfrm.controls['dobdate'].touched">
+        <div *ngIf="regfrm.controls['dobdate'].errors.required">Date of Birth is Required</div>
+        </div>
+
+      <div class="form-group">
+          <label>Password</label>
+          <input type="password" formControlName="pass" ([ngModel])="userObj.pass" name="pass" class ="form-control" placeholder="Enter Password min 6 digit">
+
+
+          <small class="text-danger" *ngIf="regfrm.errors?.misMatch">passwords do not match</small>
+        </div>
+
+      
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+
+
+         <input type="password" [class.is-invalid]="regfrm.errors?.misMatch" formControlName="cpass" ([ngModel])="userObj.cpass" name="cpass" class ="form-control" placeholder="Confirm password">
+         <small class="text-danger" *ngIf="regfrm.errors?.misMatch">passwords do not match</small>
+    </div>
+     
+      
+
+<hr>
+  
+
+  <div class="form-group"> 
+    <label class="control-label" for="date">Email-Id</label>
+    <input class="form-control" id="email" formControlName="email" placeholder="Email" type="text"/>
+  </div>
+  <div  class="alert alert-danger" *ngIf="regfrm.controls['email'].invalid && regfrm.controls['email'].touched">
+    <div *ngIf="regfrm.controls['email'].errors.required">Email is Required</div>
+    </div>
+
+  <hr>
+ 
+
+  <button type="button" class="btn btn-primary" (click)="genOTP()">Generate OTP</button>
+
+  <div class="form-group">    
+    <input type="text" formControlName="otp" class ="form-control" placeholder="Please Enter OTP Here..." >
+</div>
+<div  class="alert alert-danger" *ngIf="regfrm.controls['otp'].invalid && regfrm.controls['otp'].touched">
+  <div *ngIf="regfrm.controls['otp'].errors.required">OTP is Required</div>
+  </div>
+
+<hr>
+
+<button class="btn btn-primary " name="submit" type="submit" >Sign-Up</button> &nbsp;
+<button class="btn btn-danger " name="Danger" type="submit">Cancel</button>
+
+    </form>
+</div>
+</div>
+</div>
+</div> 
+
+
+
+
+
+
+

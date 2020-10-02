@@ -1,0 +1,51 @@
+<h4 class="text-center">{{title}}</h4>
+
+<div class="jumbotron">
+<div class="container">
+<div class="row">
+
+    <div class="col-md-6">
+    <h3>Login here...!</h3>
+
+    <hr>
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+       
+
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" name="email" [(ngModel)]="LoginModel.email" #email="ngModel" 
+          [ngClass]="{'is-invalid':f.submitted && email.invalid}" class ="form-control" placeholder="Email" required>
+          <div class="invalid-feedback">
+            <div>Email required</div>
+        </div>
+      </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="pass" [(ngModel)]="LoginModel.pass" #pass="ngModel" 
+            [ngClass]="{'is-invalid':f.submitted && pass.invalid}" class ="form-control" placeholder="Password" required minlength="4">
+            <div *ngIf="f.submitted && pass.invalid" class="invalid-feedback">
+              <div *ngIf="pass.errors.required">password required</div>
+              <div *ngIf="pass.errors.minlength">password must be of 4 characters </div>
+
+          </div>
+        </div>
+
+
+<hr>
+<hr>
+<hr>
+
+<div class="form-group">
+<button class="btn btn-primary " name="submit" type="submit">Sign-In</button> &nbsp;
+
+<button class="btn btn-danger " name="Danger" type="submit" (click)="onSignupButtonClick()">Sign-Up</button>
+</div>
+
+    </form>
+</div>
+</div>
+</div>
+</div>
+

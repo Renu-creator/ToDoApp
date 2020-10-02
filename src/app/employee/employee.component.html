@@ -1,0 +1,44 @@
+<h1 align="center">Employee Details</h1>
+<br>
+<hr>
+
+<div align="right">
+    <button class="btn btn-danger " name="submit" type="submit" (click)="logOut()">LOGOUT</button> &nbsp;
+</div>
+
+
+<table border="1" align="center">
+    <tr>
+
+        <td>Emp-Id</td>
+        <td>Emp-firstname</td>
+        <td>Emp-lastname</td>
+        <td>Emp-gender</td>
+        <td>Emp-DOB</td>
+        <td>Sign-up date</td>
+        <td>Emp-Status</td>
+        <td>Activate Employee</td>
+        <td>DeActivate Employee</td>
+    </tr>
+
+    <tr *ngFor="let obj of dataarr; let i=index">
+        
+        <td>{{obj.empid}}</td>
+        <td>{{obj.fname}}</td>
+        <td>{{obj.lname}}</td>
+        <td>{{obj.gen}}</td>
+        <td>{{obj.dobdate}}</td>
+        <td>{{obj.tdate}}</td>
+        <td>{{obj.empstatus}}</td>
+        
+<td><button type="button" class="btn btn-warning" (click)="activateEmp($event,obj.empid,i)">Activate</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="deactivateemp($event,obj.empid,i)"> Deactivate </button></td>
+    </tr>
+</table>
+
+
+<br>
+<hr>
+
+<button type="button" class="btn btn-primary" (click)="genReport()">Generate Report</button>
+

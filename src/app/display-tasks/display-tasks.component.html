@@ -1,0 +1,26 @@
+<h1 align="center">Report</h1>
+<br>
+<hr>
+
+<table border="1" align="center">
+    <tr>
+
+        <td>Taskname</td>
+        <td>Taskdescription</td>
+        <td>TaskStatus</td>
+        <td>Activate Emp</td>
+        <td>Deactivate Emp</td>
+    </tr>
+
+    <ng-container *ngFor="let obj of dataarr; let i=index">
+
+    <tr *ngIf="ekey==obj.email">
+        
+        <td>{{obj.taskname}}</td>
+        <td>{{obj.desc}}</td>
+        <td>{{obj.taskstatus}}</td>
+        <td><button class="btn btn-danger" (click)="deleteTask(i)"> Activate </button></td>
+        <td><a class="btn btn-danger" (click)="editTask(obj,i)"> Deactivate </a></td>
+    </tr>
+</ng-container>
+</table>

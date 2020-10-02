@@ -1,0 +1,74 @@
+<h4 class="text-center">Welcome.... Create Task</h4>
+
+
+<div class="jumbotron">
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+
+        <form [formGroup]=taskform (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>Task Name</label>
+            <input type="text" formControlName="taskname"  [(ngModel)]="temp.taskname" class ="form-control" placeholder="Taskname">
+        </div>
+
+        <div class="form-group">
+            <label>Task Description</label>
+            <input type="text" formControlName="desc"  [(ngModel)]="temp.desc" class ="form-control" placeholder="Taskdescription">
+        </div>
+
+
+
+        <div class="form-group">
+            <button class="btn btn-primary" name="submit" type="submit">{{title}}</button> &nbsp;
+        </div>
+
+    </form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<hr>
+
+
+
+    <table border="1" align="center">
+    
+        <tr>
+            
+            <td><input type="checkbox" name="" >Select/Deselect</td>
+            <td>Task_Id</td>
+            <td>Taskname</td>
+            <td>Taskdescription</td>
+            <td>TaskStatus</td>
+            <!-- <td>Empid</td> -->
+            <td>Delete</td>
+            <td>Edit</td>
+        </tr>
+    
+        <tr *ngFor="let obj of data; let i=index">
+            
+            
+            <td><input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" /></td>
+            
+            <td>{{obj.taskid}}</td>
+            <td>{{obj.taskname}}</td>
+            <td>{{obj.desc}}</td>
+            <td>{{obj.taskstatus}}</td>
+            <td><button class="btn btn-danger" (click)="deleteTask(i)"> Delete </button></td>
+            <td><button class="btn btn-danger"  (click)="editTask(i)"> Edit </button></td>
+        
+        </tr>
+
+    </table>
+
+   
+
+
+
+

@@ -1,0 +1,13 @@
+<!-- <p>otpand-email works!</p> -->
+
+
+<button type="button" class="btn btn-primary" (click)="showModal=true" data-toggle="modal" data-target="#myModal">
+    Generate OTP
+  </button>
+
+  
+
+<div class="form-group">
+<label>OTP</label>
+<input type="text" name="otp" [(ngModel)]="LoginModel.otp" class ="form-control" placeholder="otp" (keyup)="genOtp($event.target.value)">
+</div>
